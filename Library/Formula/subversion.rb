@@ -173,7 +173,7 @@ class Subversion < Formula
       system "make", "install-swig-pl", "DESTDIR=#{prefix}"
       # Some of the libraries get installed into the wrong place, they end up having the
       # prefix in the directory name twice.
-      mv Dir["#{prefix}/#{lib}/*"], "#{lib}"
+      system "mv #{Dir["#{prefix}/#{lib}/*"].join(" ")} #{lib}"
     end
 
     if build.include? 'java'
